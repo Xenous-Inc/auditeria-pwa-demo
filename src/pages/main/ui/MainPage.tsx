@@ -14,8 +14,6 @@ import { AudioPlayer } from 'widgets/audioPlayer/index';
 import { Header } from 'widgets/header/index';
 
 const MainPage: React.FC = () => {
-    const { t } = useTranslation();
-
     const [isPopupShown, setPopupShown] = useState<boolean>(false);
     const [popupImage, setPopupImage] = useState<string | undefined>(undefined);
 

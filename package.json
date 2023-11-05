@@ -1,6 +1,6 @@
 {
-    "name": "react-webpack-template",
-    "homepage": "https://xenous-inc.github.io/auditeria-pwa-demo/",
+    "name": "auditeria-pwa-demo",
+    "homepage": "https://xenous-inc.github.io/auditeria-pwa-demo",
     "version": "1.0.0",
     "main": "index.js",
     "private": false,
