@@ -10,6 +10,7 @@ module.exports = {
                 'grey': '#555353',
                 'red': '#F00000',
                 'orange': '#EC8F32',
+                'player-bg': '#151516',
             },
         },
         fontFamily: {
