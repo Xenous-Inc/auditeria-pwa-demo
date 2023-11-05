@@ -12,7 +12,9 @@
         "analyze:dev": "webpack --env mode=development --env analyze=true",
         "lint": "eslint \"**/*.{ts,tsx}\"",
         "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "predeploy": "yarn run build:prod",
+        "deploy": "gh-pages -d build"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.17",
