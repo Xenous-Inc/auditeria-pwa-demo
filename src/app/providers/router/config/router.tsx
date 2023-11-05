@@ -8,5 +8,5 @@ export const router = createBrowserRouter(
             element: <MainPage />,
         },
     ],
-    { basename: '/app' }
+    { basename: 'https://xenous-inc.github.io/auditeria-pwa-demo' }
 );
