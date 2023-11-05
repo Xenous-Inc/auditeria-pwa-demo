@@ -1,8 +1,9 @@
 {
     "name": "react-webpack-template",
-    "homepage": "https://xenous-inc.github.io/auditeria-pwa-demo",
+    "homepage": "https://xenous-inc.github.io/auditeria-pwa-demo/",
     "version": "1.0.0",
     "main": "index.js",
+    "private": false,
     "license": "MIT",
     "scripts": {
         "dev": "webpack serve --env port=3000",
