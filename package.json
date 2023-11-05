@@ -1,5 +1,6 @@
 {
     "name": "react-webpack-template",
+    "homepage": "https://xenous-inc.github.io/auditeria-pwa-demo",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
