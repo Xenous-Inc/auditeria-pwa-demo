@@ -3,7 +3,7 @@
     "name": "Auditeria demo PWA",
     "icons": [
         {
-            "src": "/images/logo.png",
+            "src": "./logo.png",
             "type": "image/png",
             "sizes": "144x144"
         }

@@ -20,7 +20,12 @@ export const buildPlugins = ({ paths, isDev, analyze }: BuildOptions): WebpackPl
             __IS_DEV__: JSON.stringify(isDev),
         }),
         new CopyPlugin({
-            patterns: [{ from: paths.locales, to: paths.localesOutput }],
+            patterns: [
+                { from: paths.locales, to: paths.localesOutput },
+                { from: paths.manifest, to: paths.manifestOutput },
+                { from: paths.images, to: paths.imagesOutput },
+                { from: paths.serviceWorker, to: paths.serviceWorkerOutput },
+            ],
         }),
         new BundleAnalyzerPlugin({
             analyzerMode: analyze ? 'server' : 'disabled',
