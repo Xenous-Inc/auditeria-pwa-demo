@@ -1,0 +1,1 @@
+const CACHE = 'cache-test'; // eslint-disable-line no-use-before-define
