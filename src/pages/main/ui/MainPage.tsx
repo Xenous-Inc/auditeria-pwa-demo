@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { ImagePopup } from 'features/imagePopup';
 import AuditeriaGreyLogo from 'shared/assets/auditeria-grey-logo.svg';
 import BookCoverExample from 'shared/assets/book-cover-example.png';
@@ -41,7 +40,7 @@ const MainPage: React.FC = () => {
                     <img src={BookCoverExample} className={'object-cover'} />
                 </div>
                 <div className={'mt-4'}>
-                    <AudioPlayer />
+                    <AudioPlayer chapter='0' />
                 </div>
                 <div className={'flex flex-row justify-between mt-6 gap-x-2'}>
                     <div className={'flex flex-row gap-x-2 items-center'}>
@@ -98,15 +97,75 @@ const MainPage: React.FC = () => {
                     <div className={'flex flex-col gap-y-4'}>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold mt-3'}>
                             <p>Трек 02. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer />
+                            <AudioPlayer chapter='1' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold mt-3'}>
+                            <p>Трек 02. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='2' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 03. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer />
+                            <AudioPlayer chapter='3' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer />
+                            <AudioPlayer chapter='4' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='5' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='6' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='7' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='8' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='9' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='10' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='11' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='12' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='13' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='14' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='15' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='16' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='17' />
+                        </div>
+                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
+                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                            <AudioPlayer chapter='18' />
                         </div>
                     </div>
                 </div>
