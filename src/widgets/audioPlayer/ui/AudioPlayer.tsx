@@ -34,8 +34,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = props => {
     const progressBar = useRef<ElementRef<'input'>>(null); // reference our progress bar
     const animationRef = useRef<number>(); // reference the animation
 
-    useEffect(() => {}, [audioPlayer?.current?.onloadedmetadata, audioPlayer?.current?.readyState]);
-
     const calculateTime = (secs: number) => {
         const minutes = Math.floor(secs / 60);
         const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
@@ -47,6 +45,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = props => {
     async function togglePlayPause() {
         const seconds = Math.floor(audioPlayer?.current?.duration ?? 0);
         setDuration(seconds);
+        // @ts-expect-error
         progressBar.current.max = seconds.toString();
         const prevValue = isPlaying;
         setIsPlaying(!prevValue);
