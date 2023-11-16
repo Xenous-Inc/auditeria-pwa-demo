@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import DownloadButton from 'features/downloadButton/ui/DownloadButton';
 import { ImagePopup } from 'features/imagePopup';
 import AuditeriaGreyLogo from 'shared/assets/auditeria-grey-logo.svg';
 import BookCoverExample from 'shared/assets/book-cover-example.png';
@@ -41,6 +42,7 @@ const MainPage: React.FC = () => {
                 </div>
                 <div className={'mt-4'}>
                     <AudioPlayer chapter='0' />
+                    <DownloadButton chapter='0' />
                 </div>
                 <div className={'flex flex-row justify-between mt-6 gap-x-2'}>
                     <div className={'flex flex-row gap-x-2 items-center'}>
@@ -81,7 +83,7 @@ const MainPage: React.FC = () => {
                         <p className={'text-2xl'}>Постер с героями фильма</p>
                     </div>
                     <div
-                        className={'flex flex-row gap-x-7 items-center'}
+                        className={'flex flex-row gap-x-7 items-center cursor-pointer'}
                         onClick={() => {
                             setPopupImage(BookCoverExample);
                             setPopupShown(true);
@@ -98,74 +100,92 @@ const MainPage: React.FC = () => {
                         <div className={'flex flex-col gap-y-1 text-white font-semibold mt-3'}>
                             <p>Трек 02. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='1' />
+                            <DownloadButton chapter='1' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold mt-3'}>
                             <p>Трек 02. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='2' />
+                            <DownloadButton chapter='2' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 03. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='3' />
+                            <DownloadButton chapter='3' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='4' />
+                            <DownloadButton chapter='4' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='5' />
+                            <DownloadButton chapter='5' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='6' />
+                            <DownloadButton chapter='6' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='7' />
+                            <DownloadButton chapter='7' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='8' />
+                            <DownloadButton chapter='8' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='9' />
+                            <DownloadButton chapter='9' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='10' />
+                            <DownloadButton chapter='10' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='11' />
+                            <DownloadButton chapter='11' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='12' />
+                            <DownloadButton chapter='12' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='13' />
+                            <DownloadButton chapter='13' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='14' />
+                            <DownloadButton chapter='14' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='15' />
+                            <DownloadButton chapter='15' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='16' />
+                            <DownloadButton chapter='16' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='17' />
+                            <DownloadButton chapter='17' />
                         </div>
                         <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
                             <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
                             <AudioPlayer chapter='18' />
+                            <DownloadButton chapter='18' />
                         </div>
                     </div>
                 </div>
