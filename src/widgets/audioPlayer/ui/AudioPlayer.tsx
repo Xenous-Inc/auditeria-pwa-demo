@@ -1,4 +1,4 @@
-import React, { useState, type ElementRef, useRef, useEffect } from 'react';
+import React, { useState, type ElementRef, useRef } from 'react';
 import { fetchChapter } from 'pages/main/api/fetchChapter';
 import backTo15Icon from 'shared/assets/back-to-15-icon.svg';
 import forwartTo15Icon from 'shared/assets/forward-to-15-icon.svg';

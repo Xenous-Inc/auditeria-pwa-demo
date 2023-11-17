@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://80.90.188.237:8080/chapter';
+const URL = 'https://aud.labamnus.ru/chapter';
 
 interface AudioResponse {
     audio: string;
