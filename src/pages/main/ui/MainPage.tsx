@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DownloadButton from 'features/downloadButton/ui/DownloadButton';
 import { ImagePopup } from 'features/imagePopup';
 import AuditeriaGreyLogo from 'shared/assets/auditeria-grey-logo.svg';
@@ -12,10 +12,28 @@ import VkIcon from 'shared/assets/vk-icon.svg';
 import YoutubeIcon from 'shared/assets/youtube-icon.svg';
 import { AudioPlayer } from 'widgets/audioPlayer/index';
 import { Header } from 'widgets/header/index';
+import { type AudioResponse, fetchChapter } from '../api/fetchChapter';
 
 const MainPage: React.FC = () => {
     const [isPopupShown, setPopupShown] = useState<boolean>(false);
+    const [isLoading, setLoading] = useState<boolean>(false);
     const [popupImage, setPopupImage] = useState<string | undefined>(undefined);
+    const [audio, setAudio] = useState<string | null>(null);
+    const [chapters, setChapters] = useState<Record<string, string | null>>({});
+
+    useEffect(() => {
+        console.log(chapters);
+    }, [chapters]);
+
+    const fetchAudio = async () => {
+        if (!isLoading) {
+            for (let i = 0; i < 18; i++) {
+                setChapters(prev => ({ ...prev, [i.toString()]: null }));
+                const result = await fetchChapter(i.toString());
+                setChapters(prev => ({ ...prev, [i.toString()]: result.audio }));
+            }
+        }
+    };
 
     return (
         <div className='w-screen min-h-screen flex flex-col font-Ubuntu overflow-x-hidden'>
@@ -40,10 +58,6 @@ const MainPage: React.FC = () => {
                 <div className={'h-[340px] mt-2 overflow-hidden rounded-3xl'}>
                     <img src={BookCoverExample} className={'object-cover'} />
                 </div>
-                <div className={'mt-4'}>
-                    <AudioPlayer chapter='0' />
-                    <DownloadButton chapter='0' />
-                </div>
                 <div className={'flex flex-row justify-between mt-6 gap-x-2'}>
                     <div className={'flex flex-row gap-x-2 items-center'}>
                         <p className={'text-5xl text-red font-bold'}>2,8</p>
@@ -60,8 +74,16 @@ const MainPage: React.FC = () => {
                     </div>
                 </div>
                 <div className={'flex flex-row justify-between mt-6'}>
-                    <button className={'text-orange rounded-full text-xs border-orange border-2 py-4 px-3 font-bold'}>
-                        Отправить на рабочий стол
+                    <button
+                        className={
+                            'text-orange rounded-full w-60 mx-2 text-xs border-orange border-2 py-4 px-3 font-bold'
+                        }
+                        onClick={() => {
+                            setLoading(true);
+                            void fetchAudio();
+                        }}
+                    >
+                        Скачать книгу
                     </button>
                     <div className={'flex flex-row gap-x-4'}>
                         <img src={VkIcon} />
@@ -70,123 +92,26 @@ const MainPage: React.FC = () => {
                         <img src={YoutubeIcon} />
                     </div>
                 </div>
-                <div className={'flex flex-col gap-y-3 mt-12 text-white'}>
-                    <p className={'font-medium text-3xl'}>Дополнительные материалы</p>
-                    <div
-                        className={'flex flex-row gap-x-7 items-center'}
-                        onClick={() => {
-                            setPopupImage(BookCoverExample);
-                            setPopupShown(true);
-                        }}
-                    >
-                        <img src={BookCoverExample} className={'w-28 h-24 object-cover rounded-xl'} />
-                        <p className={'text-2xl'}>Постер с героями фильма</p>
-                    </div>
-                    <div
-                        className={'flex flex-row gap-x-7 items-center cursor-pointer'}
-                        onClick={() => {
-                            setPopupImage(BookCoverExample);
-                            setPopupShown(true);
-                        }}
-                    >
-                        <img src={BookCoverExample} className={'w-28 h-24 object-cover rounded-xl'} />
-                        <p className={'text-2xl'}>Блокнот с главными героями</p>
-                    </div>
+                <div className={'mt-12'}>
+                    <AudioPlayer audio={audio} />
                 </div>
-                <div className={'flex flex-col mt-20'}>
+                <div className={'flex flex-col mt-12'}>
                     <p className={'text-white text-3xl font-medium'}>Содержание книги</p>
                     <p className={'text-grey py-1'}>18 частей / 23 часа 15 минут</p>
                     <div className={'flex flex-col gap-y-4'}>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold mt-3'}>
-                            <p>Трек 02. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='1' />
-                            <DownloadButton chapter='1' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold mt-3'}>
-                            <p>Трек 02. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='2' />
-                            <DownloadButton chapter='2' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 03. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='3' />
-                            <DownloadButton chapter='3' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='4' />
-                            <DownloadButton chapter='4' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='5' />
-                            <DownloadButton chapter='5' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='6' />
-                            <DownloadButton chapter='6' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='7' />
-                            <DownloadButton chapter='7' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='8' />
-                            <DownloadButton chapter='8' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='9' />
-                            <DownloadButton chapter='9' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='10' />
-                            <DownloadButton chapter='10' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='11' />
-                            <DownloadButton chapter='11' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='12' />
-                            <DownloadButton chapter='12' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='13' />
-                            <DownloadButton chapter='13' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='14' />
-                            <DownloadButton chapter='14' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='15' />
-                            <DownloadButton chapter='15' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='16' />
-                            <DownloadButton chapter='16' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='17' />
-                            <DownloadButton chapter='17' />
-                        </div>
-                        <div className={'flex flex-col gap-y-1 text-white font-semibold'}>
-                            <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
-                            <AudioPlayer chapter='18' />
-                            <DownloadButton chapter='18' />
-                        </div>
+                        {Array.from({ length: 20 }, (_, index) => index).map((elem, index) => (
+                            <div className={'flex flex-col gap-y-1 text-white font-semibold'} key={index}>
+                                <p>Трек 04. § 1. Россия и Европа в конце семнадцатого века.mp3</p>
+                                <DownloadButton
+                                    chapter={elem.toString()}
+                                    disabled={chapters[elem] === null || chapters[elem] === undefined}
+                                    onClick={() => {
+                                        console.log('hello');
+                                        setAudio(chapters[elem]);
+                                    }}
+                                />
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div className={'flex flex-row justify-center mt-24'}>

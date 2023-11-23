@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const URL = 'https://aud.labamnus.ru/chapter';
 
-interface AudioResponse {
+export interface AudioResponse {
     audio: string;
     text: string;
 }
