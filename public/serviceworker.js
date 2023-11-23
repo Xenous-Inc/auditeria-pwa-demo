@@ -55,7 +55,7 @@ const update = request =>
     caches
         .open(CURRENT_CACHE)
         .then(cache => {
-            if (request.url.startsWith('http://80.90.188.237:8080/chapter')) {
+            if (request.url.startsWith('https://aud.labamnus.ru/chapter')) {
                 fetch(request).then(response => cache.put(request, response))
             }
         }
@@ -65,7 +65,7 @@ const update = request =>
 // from the network with a timeout, if something fails serve from cache)
 self.addEventListener('fetch', evt => {
     evt.respondWith(
-        fromNetwork(evt.request, 10000).catch(() => fromCache(evt.request))
+        fromNetwork(evt.request, 4000).catch(() => fromCache(evt.request))
     );
     evt.waitUntil(update(evt.request));
 });

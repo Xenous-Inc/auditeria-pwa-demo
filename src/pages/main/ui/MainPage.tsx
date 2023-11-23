@@ -17,6 +17,7 @@ import { type AudioResponse, fetchChapter } from '../api/fetchChapter';
 const MainPage: React.FC = () => {
     const [isPopupShown, setPopupShown] = useState<boolean>(false);
     const [isLoading, setLoading] = useState<boolean>(false);
+    const [downloadButtonText, setDownloadButtonText] = useState<string>('Скачать книгу');
     const [popupImage, setPopupImage] = useState<string | undefined>(undefined);
     const [audio, setAudio] = useState<string | null>(null);
     const [chapters, setChapters] = useState<Record<string, string | null>>({});
@@ -25,12 +26,24 @@ const MainPage: React.FC = () => {
         console.log(chapters);
     }, [chapters]);
 
+    useEffect(() => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+        for (let i = 0; i < 2; i++) {
+            void fetchChapter(i.toString(), signal).then(data => {
+                setChapters(prev => ({ ...prev, [i.toString()]: data ? data.audio : null }));
+            });
+        }
+    }, []);
+
     const fetchAudio = async () => {
         if (!isLoading) {
             for (let i = 0; i < 18; i++) {
                 setChapters(prev => ({ ...prev, [i.toString()]: null }));
-                const result = await fetchChapter(i.toString());
-                setChapters(prev => ({ ...prev, [i.toString()]: result.audio }));
+                const result = await fetchChapter(i.toString(), null);
+                if (result) {
+                    setChapters(prev => ({ ...prev, [i.toString()]: result.audio }));
+                }
             }
         }
     };
@@ -80,16 +93,40 @@ const MainPage: React.FC = () => {
                         }
                         onClick={() => {
                             setLoading(true);
+                            setDownloadButtonText('Загрузка...');
                             void fetchAudio();
                         }}
                     >
-                        Скачать книгу
+                        {downloadButtonText}
                     </button>
                     <div className={'flex flex-row gap-x-4'}>
                         <img src={VkIcon} />
                         <img src={InstagramIcon} />
                         <img src={FacebookIcon} />
                         <img src={YoutubeIcon} />
+                    </div>
+                </div>
+                <div className={'flex flex-col gap-y-3 mt-12 text-white'}>
+                    <p className={'font-medium text-3xl'}>Дополнительные материалы</p>
+                    <div
+                        className={'flex flex-row gap-x-7 items-center'}
+                        onClick={() => {
+                            setPopupImage(BookCoverExample);
+                            setPopupShown(true);
+                        }}
+                    >
+                        <img src={BookCoverExample} className={'w-28 h-24 object-cover rounded-xl'} />
+                        <p className={'text-2xl'}>Постер с героями фильма</p>
+                    </div>
+                    <div
+                        className={'flex flex-row gap-x-7 items-center'}
+                        onClick={() => {
+                            setPopupImage(BookCoverExample);
+                            setPopupShown(true);
+                        }}
+                    >
+                        <img src={BookCoverExample} className={'w-28 h-24 object-cover rounded-xl'} />
+                        <p className={'text-2xl'}>Блокнот с главными героями</p>
                     </div>
                 </div>
                 <div className={'mt-12'}>

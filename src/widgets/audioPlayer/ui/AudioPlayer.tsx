@@ -172,7 +172,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audio }) => {
         <div>
             <div className={'w-full bg-player-bg rounded-xl px-4'}>
                 <audio
-                    controls={true}
                     ref={audioPlayer}
                     onCanPlayThrough={event => {
                         setDuration(event.currentTarget.duration);

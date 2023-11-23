@@ -7,8 +7,9 @@ export interface AudioResponse {
     text: string;
 }
 
-export const fetchChapter = async (query: string): Promise<AudioResponse> => {
+export const fetchChapter = async (query: string, signal: any | null): Promise<AudioResponse | null> => {
     const { data } = await axios.get(URL, {
+        signal: AbortSignal.timeout(8000),
         params: {
             number: query,
         },
