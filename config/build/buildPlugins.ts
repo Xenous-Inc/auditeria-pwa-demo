@@ -33,7 +33,7 @@ export const buildPlugins = ({ paths, isDev, analyze }: BuildOptions): WebpackPl
     ];
 
     if (isDev) {
-        plugins.push(new ReactRefreshWebpackPlugin());
+        plugins.push(new ReactRefreshWebpackPlugin({ overlay: false }));
     }
 
     return plugins;
