@@ -1,8 +1,13 @@
-import './styles/index.css';
-import { MainPage } from 'pages/main';
+import { MainPage } from 'pages/Main';
+import { Providers } from './providers/Providers';
+import './styles/index.scss';
 
 const App: React.FC = () => {
-    return <MainPage />;
+    return (
+        <Providers>
+            <MainPage />
+        </Providers>
+    );
 };
 
 export default App;

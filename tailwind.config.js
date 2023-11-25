@@ -11,10 +11,12 @@ module.exports = {
                 'red': '#F00000',
                 'orange': '#EC8F32',
                 'player-bg': '#151516',
+                'rating-red': '#ff0000',
+                'rating-green': '#01B268',
             },
         },
         fontFamily: {
-            Ubuntu: ['ubuntu', 'sans-serif'],
+            ubuntu: ['ubuntu', 'sans-serif'],
         },
     },
     plugins: [],
