@@ -12,7 +12,6 @@ export interface BuildPaths {
     images: string;
     imagesOutput: string;
     serviceWorker: string;
-    serviceWorkerOutput: string;
 }
 
 export interface BuildEnv {

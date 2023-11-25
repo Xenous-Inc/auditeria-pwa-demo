@@ -3,6 +3,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { ServiceWorkerPlugin } from 'service-worker-webpack';
 import { ProgressPlugin, DefinePlugin, type WebpackPluginInstance } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { type BuildOptions } from './types/config';
@@ -24,12 +25,12 @@ export const buildPlugins = ({ paths, isDev, analyze }: BuildOptions): WebpackPl
                 { from: paths.locales, to: paths.localesOutput },
                 { from: paths.manifest, to: paths.manifestOutput },
                 { from: paths.images, to: paths.imagesOutput },
-                { from: paths.serviceWorker, to: paths.serviceWorkerOutput },
             ],
         }),
         new BundleAnalyzerPlugin({
             analyzerMode: analyze ? 'server' : 'disabled',
         }),
+        new ServiceWorkerPlugin(),
     ];
 
     if (isDev) {

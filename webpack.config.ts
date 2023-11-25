@@ -5,6 +5,7 @@ import { type BuildEnv, type BuildPaths } from './config/build/types/config';
 export default (env: BuildEnv) => {
     const paths: BuildPaths = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
+        serviceWorker: path.resolve(__dirname, 'src', 'service-worker.js'),
         output: path.resolve(__dirname, 'build'),
         html: path.resolve(__dirname, 'public', 'index.html'),
         src: path.resolve(__dirname, 'src'),
@@ -12,8 +13,6 @@ export default (env: BuildEnv) => {
         manifestOutput: path.resolve(__dirname, 'build', 'manifest.json'),
         images: path.resolve(__dirname, 'public', 'logo.png'),
         imagesOutput: path.resolve(__dirname, 'build', 'logo.png'),
-        serviceWorker: path.resolve(__dirname, 'public', 'serviceworker.js'),
-        serviceWorkerOutput: path.resolve(__dirname, 'build', 'serviceworker.js'),
         locales: path.resolve(__dirname, 'public', 'locales'),
         localesOutput: path.resolve(__dirname, 'build', 'locales'),
     };
