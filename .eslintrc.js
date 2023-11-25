@@ -9,6 +9,7 @@ module.exports = {
         'plugin:prettier/recommended',
         'plugin:react-hooks/recommended',
     ],
+    ignorePatterns: ['serviceworker.js'],
     plugins: ['react', 'react-hooks', 'react-refresh'],
     parser: '@typescript-eslint/parser',
     parserOptions: {

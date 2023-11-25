@@ -1,9 +1,13 @@
-import 'shared/config/i18n';
-import './styles/index.css';
-import { RouterProvider } from './providers/router';
+import { MainPage } from 'pages/Main';
+import { Providers } from './providers/Providers';
+import './styles/index.scss';
 
 const App: React.FC = () => {
-    return <RouterProvider />;
+    return (
+        <Providers>
+            <MainPage />
+        </Providers>
+    );
 };
 
 export default App;

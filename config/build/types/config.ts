@@ -7,6 +7,11 @@ export interface BuildPaths {
     src: string;
     locales: string;
     localesOutput: string;
+    manifest: string;
+    manifestOutput: string;
+    images: string;
+    imagesOutput: string;
+    serviceWorker: string;
 }
 
 export interface BuildEnv {

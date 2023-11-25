@@ -1,7 +1,6 @@
 import styles from 'ansi-styles';
 import { type AxiosError, type AxiosResponse, type InternalAxiosRequestConfig } from 'axios';
 import { logger } from '../lib';
-import { ApiError } from './types';
 
 export interface ExtendedInternalAxiosRequestConfig<D = any> extends InternalAxiosRequestConfig<D> {
     withToken?: boolean;
@@ -34,7 +33,3 @@ export const loggingResponseInterceptorHandlers = [
         return await Promise.reject(error);
     },
 ] as const;
-
-export const transformErrorInterceptorHandler = async (error?: ApiError) => {
-    return await Promise.reject(new ApiError(error));
-};
