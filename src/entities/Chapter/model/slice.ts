@@ -51,7 +51,7 @@ export const chaptersSlice = createSlice({
     },
 });
 
-export const chaptersSliceFilter = createBlacklistFilter(chaptersSlice.name, ['status', 'error']);
+export const chaptersSliceFilter = createBlacklistFilter(chaptersSlice.name, ['status', 'error', 'selectedIndex']);
 
 export const { createSelectChapterAction, createDeselectChapterAction } = chaptersSlice.actions;
 

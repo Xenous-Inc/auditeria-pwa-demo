@@ -22,5 +22,5 @@ export const selectSelectedChapterIndex = createSelector(selectChaptersSlice, sl
 export const selectSelectedChapter = createSelector(
     selectChapterEntities,
     selectSelectedChapterIndex,
-    (entities, index) => (index ? entities[index] : undefined)
+    (entities, index) => (index !== undefined ? entities[index] : undefined)
 );

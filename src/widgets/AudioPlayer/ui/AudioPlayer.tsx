@@ -80,7 +80,7 @@ const AudioPlayer: React.FC = () => {
                     className={cn(styles.playPause, !isLoaded && 'opacity-50')}
                     disabled={!isLoaded}
                 >
-                    {isPlaying ? <PauseIcon className={'w-8'} /> : <PlayIcon className={'w-8'} />}
+                    {isPlaying ? <PauseIcon className={'w-6'} /> : <PlayIcon className={'w-8'} />}
                 </button>
                 <button onClick={fastForward} className={cn(!isLoaded && 'opacity-50')} disabled={!isLoaded}>
                     <FastForwardIcon className={'w-6'} />
