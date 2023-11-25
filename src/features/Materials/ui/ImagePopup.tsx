@@ -12,7 +12,6 @@ const ImagePopup: React.FC<ImagePopupProps> = props => {
 
     return (
         <Transition appear show={isShown} as={Fragment}>
-            {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
             <Dialog
                 as={'div'}
                 className={'fixed w-auto h-auto inset-0 z-50'}
@@ -42,8 +41,8 @@ const ImagePopup: React.FC<ImagePopupProps> = props => {
                         leaveFrom={'opacity-100 scale-100'}
                         leaveTo={'opacity-0 scale-90'}
                     >
-                        <Dialog.Panel className={'flex flex-col items-center rounded-40 mx-auto p-5 '}>
-                            <img src={image} className={'w-full h-full'} />
+                        <Dialog.Panel className={'flex flex-col items-center rounded-40 mx-auto p-5 overflow-hidden'}>
+                            <img src={image} className={'w-full h-full object-contain'} />
                         </Dialog.Panel>
                     </Transition.Child>
                 </div>
