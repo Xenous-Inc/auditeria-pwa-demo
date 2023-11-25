@@ -6,6 +6,7 @@ import FastBackwardIcon from 'shared/assets/back-to-15-icon.svg';
 import FastForwardIcon from 'shared/assets/forward-to-15-icon.svg';
 import PauseIcon from 'shared/assets/pause-icon.svg';
 import PlayIcon from 'shared/assets/play-icon.svg';
+import { logger } from 'shared/lib';
 import { formattedTime } from '../helpers/formattedTime';
 import styles from './AudioPlayer.module.css';
 
@@ -98,10 +99,18 @@ const AudioPlayer: React.FC = () => {
                         onBlur={() => {
                             isSliderFocused.current = false;
                         }}
-                        onPointerUp={event => {
+                        onTouchStart={() => {
+                            isSliderFocused.current = true;
+                        }}
+                        onTouchEnd={event => {
+                            isSliderFocused.current = false;
                             audioPlayer.current &&
                                 (audioPlayer.current.currentTime = parseInt(event.currentTarget.value));
+                        }}
+                        onPointerUp={event => {
                             progressBar.current?.blur();
+                            audioPlayer.current &&
+                                (audioPlayer.current.currentTime = parseInt(event.currentTarget.value));
                         }}
                     />
                 </div>
