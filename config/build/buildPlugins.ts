@@ -11,7 +11,10 @@ import { type BuildOptions } from './types/config';
 export const buildPlugins = ({ paths, isDev, analyze }: BuildOptions): WebpackPluginInstance[] => {
     const plugins = [
         new Dotenv({ systemvars: true }),
-        new HtmlWebpackPlugin({ template: paths.html, base: '/' }),
+        new HtmlWebpackPlugin({
+            template: paths.html,
+            base: isDev ? '/' : 'https://xenous-inc.github.io/auditeria-pwa-demo/',
+        }),
         new ProgressPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css',
@@ -30,7 +33,9 @@ export const buildPlugins = ({ paths, isDev, analyze }: BuildOptions): WebpackPl
         new BundleAnalyzerPlugin({
             analyzerMode: analyze ? 'server' : 'disabled',
         }),
-        new ServiceWorkerPlugin(),
+        new ServiceWorkerPlugin(
+            isDev ? undefined : { registration: { path: '/auditeria-pwa-demo/service-worker.js' } }
+        ),
     ];
 
     if (isDev) {
