@@ -1,16 +1,27 @@
+import createIdbStorage from '@piotr-cz/redux-persist-idb-storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { chaptersSlice } from 'entities/Chapter';
-import { REDUX_PERSIST_STORAGE_KEY } from 'shared/lib';
+import {
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+    type PersistConfig,
+} from 'redux-persist';
+import { chaptersSlice, chaptersSliceFilter } from 'entities/Chapter';
+import { REDUX_PERSIST_DB_NAME, REDUX_PERSIST_KEY, REDUX_PERSIST_STORE_NAME } from 'shared/lib';
 import { logMiddleware } from './middleware';
 
 const persistConfig = {
-    key: REDUX_PERSIST_STORAGE_KEY,
-    storage,
+    key: REDUX_PERSIST_KEY,
+    storage: createIdbStorage({ name: REDUX_PERSIST_DB_NAME, storeName: REDUX_PERSIST_STORE_NAME }),
     whitelist: [chaptersSlice.name],
     blacklist: [],
-};
+    transforms: [chaptersSliceFilter],
+} satisfies PersistConfig<any>;
 
 const rootReducer = combineReducers({
     [chaptersSlice.name]: chaptersSlice.reducer,

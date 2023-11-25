@@ -18,8 +18,7 @@ export const Actions: React.FC = () => {
         for (let i = 0; i < API_CHAPTERS_COUNT; i++) {
             if (ids.includes(i)) continue;
 
-            void dispatch(createGetChapterAction({ number: i }));
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await dispatch(createGetChapterAction({ number: i }));
         }
     }, [ids]);
 

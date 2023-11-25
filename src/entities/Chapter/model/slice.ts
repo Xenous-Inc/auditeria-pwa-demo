@@ -5,6 +5,7 @@ import {
     type EntityId,
     type PayloadAction,
 } from '@reduxjs/toolkit';
+import { createBlacklistFilter } from 'redux-persist-transform-filter';
 import { type ApiNormalizedState, Status } from 'shared/api';
 import { queryChapter } from './query';
 import { type QueryChapterRequest, type ChapterSchema } from './schema';
@@ -49,6 +50,8 @@ export const chaptersSlice = createSlice({
         });
     },
 });
+
+export const chaptersSliceFilter = createBlacklistFilter(chaptersSlice.name, ['status', 'error']);
 
 export const { createSelectChapterAction, createDeselectChapterAction } = chaptersSlice.actions;
 
