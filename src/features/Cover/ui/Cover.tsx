@@ -15,7 +15,7 @@ export const Cover: React.FC = () => {
                         <span className={'underline'}>Алексей Сквозной</span>
                     </div>
                 </div>
-                <div className={'w-80 aspect-square rounded-3xl overflow-hidden'}>
+                <div className={'w-72 aspect-square rounded-3xl overflow-hidden'}>
                     <img src={BookCoverImage} className={'object-cover'} />
                 </div>
             </div>
