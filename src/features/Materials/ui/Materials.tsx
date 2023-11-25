@@ -9,7 +9,7 @@ export const Materials: React.FC = () => {
     return (
         <>
             <ImagePopup isShown={isPopupShown} image={popupImage ?? ''} setIsShown={setPopupShown} />
-            <div className={'w-full h-full flex flex-col text-white px-8 gap-y-3'}>
+            <div className={'w-full h-full flex flex-col text-white px-4 gap-y-3'}>
                 <span className={'font-medium text-3xl'}>Дополнительные материалы</span>
                 <div
                     className={'flex flex-row gap-x-7 items-center'}

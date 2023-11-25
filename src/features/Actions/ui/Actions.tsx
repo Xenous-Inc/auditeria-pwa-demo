@@ -26,7 +26,7 @@ export const Actions: React.FC = () => {
         <>
             <div className={'flex flex-row justify-between gap-x-8'}>
                 <button
-                    className={'w-full text-orange text-xs font-bold border-2 border-orange rounded-full px-4 py-4'}
+                    className={'w-full text-orange text-xs font-bold border-2 border-orange rounded-full px-2 py-4'}
                     onClick={onDownload}
                 >
                     {status === Status.Pending ? 'Загрузка...' : 'Скачать книгу'}
